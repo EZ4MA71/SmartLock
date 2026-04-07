@@ -16,6 +16,7 @@
 # Keil 用户配置（机器相关，不共享）
 *.uvoptx
 *.uvguix
+*.uvguix.*
 
 # Keil 构建目录
 MDK-ARM/Objects/
