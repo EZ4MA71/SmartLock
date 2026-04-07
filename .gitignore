@@ -21,6 +21,7 @@
 MDK-ARM/Objects/
 MDK-ARM/Listings/
 MDK-ARM/RTE/
+MDK-ARM/RTOStest/
 
 # 系统文件
 .DS_Store
