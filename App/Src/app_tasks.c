@@ -4,6 +4,7 @@
 #include "main.h"
 #include "log.h"
 #include "lcd.h"
+#include "bsp_rtc.h"
 
 void vLedTask(void *pvParameters)
 {
@@ -27,12 +28,17 @@ void vDisplayTask(void *pvParameters)
     LOG_INFO("Display task started");
 
     SPI_LCD_Init();
+    RTC_Init();
     LOG_INFO("LCD init done");
-
+		
+	/* RTC时间显示 */
+    RTC_TimeTypeDef time;
+    RTC_DateTypeDef date; 
     for (;;)
     {
         LCD_Test_Color();
-        LOG_INFO("LCD test done, entering loop");
+        RTC_GetDateTime(&time, &date);
+        LOG_INFO("20%02d-%02d-%02d %02d:%02d:%02d\r\n",date.Year, date.Month, date.Date, time.Hours, time.Minutes, time.Seconds);
         vTaskDelay(pdMS_TO_TICKS(10000));
     }
 }
